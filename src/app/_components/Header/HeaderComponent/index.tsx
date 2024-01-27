@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { Header } from '../../../../payload/payload-types'
-// import { noHeaderFooterUrls } from '../../../constants'
+import { noHeaderFooterUrls } from '../../../constants'
 import { Gutter } from '../../Gutter'
 import { HeaderNav } from '../Nav'
 
@@ -17,9 +17,9 @@ const HeaderComponent = ({ header }: { header: Header }) => {
 
   return (
     <nav
-    //   className={[classes.header, noHeaderFooterUrls.includes(pathname) && classes.hide]
-    //     .filter(Boolean)
-    //     .join(' ')}
+      className={[classes.header, noHeaderFooterUrls.includes(pathname) && classes.hide]
+        .filter(Boolean)
+        .join(' ')}
     >
       <Gutter className={classes.wrap}>
         <Link href="/">
