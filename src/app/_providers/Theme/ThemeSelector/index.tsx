@@ -14,19 +14,14 @@ export const ThemeSelector: React.FC = () => {
   const { setTheme } = useTheme()
   const [show, setShow] = React.useState(false)
 
-  const onThemeChange = (themeToSet: Theme & 'auto') => {
-    if (themeToSet === 'auto') {
-      setTheme(null)
-      if (selectRef.current) selectRef.current.value = 'auto'
-    } else {
-      setTheme(themeToSet)
-    }
+  const onThemeChange = (themeToSet: Theme) => {
+    setTheme(themeToSet)
   }
 
   React.useEffect(() => {
     const preference = window.localStorage.getItem(themeLocalStorageKey)
     if (selectRef.current) {
-      selectRef.current.value = preference ?? 'auto'
+      selectRef.current.value = preference ?? 'light' // Set default to 'light'
       setShow(true)
     }
   }, [])
@@ -36,11 +31,10 @@ export const ThemeSelector: React.FC = () => {
       <label htmlFor="theme">
         <select
           id="theme"
-          onChange={e => onThemeChange(e.target.value as Theme & 'auto')}
+          onChange={e => onThemeChange(e.target.value as Theme)}
           ref={selectRef}
           className={classes.select}
         >
-          <option value="auto">Auto</option>
           <option value="light">Light</option>
           <option value="dark">Dark</option>
         </select>
