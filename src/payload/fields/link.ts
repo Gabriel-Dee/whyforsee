@@ -63,6 +63,7 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
               width: '50%',
               style: {
                 alignSelf: 'flex-end',
+                // alignSelf: 'flex-end',
               },
             },
           },
